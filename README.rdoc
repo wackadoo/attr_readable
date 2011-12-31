@@ -1,3 +1,23 @@
-= AttrReadable
+= attr_readable
 
-This project rocks and uses MIT-LICENSE.
+Use the attr_readable plugin to define and control read access to 
+individual attributes of an +ActiveRecord+.
+
+ class Model < ActiveRecord::Base
+   attr_readable :id, :name, :as => [ :default, :user, :admin ]
+ end
+ 
+Read access definitions can be queried and used to sanitize the 
+attributes of an ActiveRecord instance:
+
+  Model.readable_attributes(:admin)      # => [ :id, :name ]  #
+  instance = Model.create( :name => 'a_name', :other_attribute => 'a_value' )
+  instance.sanitized_hash(:admin)        # => { :id => 1, :name => 'a_name' }
+  instance.sanitized_hash(:other_role)   # => { }
+  
+The attr_readable plugin's design goal is to provide a mechanism
+for role-based authorizing access to individual attributes of an
++ActiveRecord+, where the mechanism closely resembles the interface 
+of the mass-assignment access control provided with +ActiveRecord+.  
+  
+Copyright (c) 2011 Sascha Lange, released under MIT license
