@@ -67,9 +67,8 @@ The module also provides two more class methods for sanitation:
  
 == Installation
 
-Just add
-  gem 'attr_readable', :git => 'git://github.com/wackadoo/attr_readable.git'
-to your gemfile and call
-  bundle install 
+Just call 
+  rails plugin install git://github.com/wackadoo/attr_readable.git
+inside your rails project. The plugin will be placed in +vendor/plugins/+ .
   
 Copyright (c) 2011 Sascha Lange, released under MIT license
