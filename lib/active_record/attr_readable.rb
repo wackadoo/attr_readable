@@ -1,6 +1,5 @@
 module ActiveRecord
   
-  
   # Use the attr_readable plugin to define and control read access to 
   # individual attributes of an +ActiveRecord+.
   #
