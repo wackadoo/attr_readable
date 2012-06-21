@@ -143,7 +143,7 @@ module ActiveRecord
               result[attr.to_sym] = hash[attr]
             else
               prefixes.each do |prefix|
-                result [attr_to_sym] = hash[attr]  if attr.start_with? prefix
+                result[attr_to_sym] = hash[attr]  if attr.to_s.start_with? prefix
               end
             end 
           end
