@@ -137,13 +137,18 @@ module ActiveRecord
             end
           end
 
+          logger.debug prefixes.inspect
+          logger.debug attributes.inspect
+          
+
           result = {}
           keys.each do |attr| 
+            logger.debug "ATTR: " + attr.to_s
             if attributes.include? attr.to_s  # corresponding attribute
               result[attr.to_sym] = hash[attr]
             else
               prefixes.each do |prefix|
-                result[attr_to_sym] = hash[attr]  if attr.to_s.start_with? prefix
+                result[attr.to_sym] = hash[attr]  if attr.to_s.start_with? prefix
               end
             end 
           end
